@@ -35,7 +35,7 @@ import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.util.*;
-
+import java.util.*;
 import java.io.IOException;
 
 /**
