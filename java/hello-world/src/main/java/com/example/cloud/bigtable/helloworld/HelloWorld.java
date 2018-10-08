@@ -117,9 +117,9 @@ public class HelloWorld {
       //byte[] startScan = Bytes.add(Bytes.toBytes(START), Bytes.toBytes("#"), Bytes.toBytes(BID));
 
       //byte[] endScan = Bytes.add(Bytes.toBytes(END), Bytes.toBytes("#"), Bytes.toBytes(BID));
-      byte startScan = Bytes.toBytes(START+"#"+BID);
+      byte[] startScan = Bytes.add(Bytes.toBytes(START+"#"+BID));
 
-      byte endScan = Bytes.toBytes(END+"#"+BID);
+      byte[] endScan = Bytes.add(Bytes.toBytes(END+"#"+BID));
       Scan scan = new Scan(startScan, endScan);
       //scan.setStartRow(startScan);
       //scan.setStopRow(endScan);
