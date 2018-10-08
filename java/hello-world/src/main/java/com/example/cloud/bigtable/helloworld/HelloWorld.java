@@ -119,17 +119,17 @@ public class HelloWorld {
       byte[] startScan = Bytes.add(Bytes.toBytes(START), Bytes.toBytes("#"), Bytes.toBytes(BID));
 
       byte[] endScan = Bytes.add(Bytes.toBytes(END), Bytes.toBytes("#"), Bytes.toBytes(BID));
-      List<Filter> filters = new ArrayList<>();
+      //List<Filter> filters = new ArrayList<>();
       //Filter filter2 = new SingleColumnValueFilter(Bytes.toBytes("info"), Bytes.toBytes("bid"),CompareFilter.CompareOp.EQUAL,Bytes.toBytes(bid));
-      Filter filter2 = new RowFilter(CompareFilter.CompareOp.EQUAL,new RegexStringComparator(".*#"+BID+"#.*"));
-      filters.add(filter2);
+      //Filter filter2 = new RowFilter(CompareFilter.CompareOp.EQUAL,new RegexStringComparator(".*#"+BID+"#.*"));
+      //filters.add(filter2);
       //byte[] startScan = Bytes.add(Bytes.toBytes(START+"#"+BID));
 
 //       byte[] endScan = Bytes.add(Bytes.toBytes(END+"#"+BID));
       Scan scan = new Scan(startScan, endScan);
       //Scan scan = new Scan();
-      FilterList filterList1 = new FilterList(filters);
-      scan.setFilter(filterList1);
+      //FilterList filterList1 = new FilterList(filters);
+      //scan.setFilter(filterList1);
       //scan.setStartRow(startScan);
       //scan.setStopRow(endScan);
 
