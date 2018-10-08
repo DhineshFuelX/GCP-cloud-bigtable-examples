@@ -114,12 +114,12 @@ public class HelloWorld {
 
       // [START scanning_all_rows]
       // Now scan across all rows.
-      //byte[] startScan = Bytes.add(Bytes.toBytes(START), Bytes.toBytes("#"), Bytes.toBytes(BID));
+      byte[] startScan = Bytes.add(Bytes.toBytes(START), Bytes.toBytes("#"), Bytes.toBytes(BID));
 
-      //byte[] endScan = Bytes.add(Bytes.toBytes(END), Bytes.toBytes("#"), Bytes.toBytes(BID));
-      byte[] startScan = Bytes.add(Bytes.toBytes(START+"#"+BID));
+      byte[] endScan = Bytes.add(Bytes.toBytes(END), Bytes.toBytes("#"), Bytes.toBytes(BID));
+      //byte[] startScan = Bytes.add(Bytes.toBytes(START+"#"+BID));
 
-      byte[] endScan = Bytes.add(Bytes.toBytes(END+"#"+BID));
+//       byte[] endScan = Bytes.add(Bytes.toBytes(END+"#"+BID));
       Scan scan = new Scan(startScan, endScan);
       //scan.setStartRow(startScan);
       //scan.setStopRow(endScan);
