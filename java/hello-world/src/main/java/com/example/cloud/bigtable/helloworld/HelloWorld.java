@@ -137,6 +137,8 @@ public class HelloWorld {
       print("Scan for all greetings:");
       ResultScanner scanner = table.getScanner(scan);
       for (Result row : scanner) {
+        System.out.println(result.toString());
+        System.out.println(result.getRow().toString());
         byte[] valueBytes = row.getValue(COLUMN_FAMILY_NAME, COLUMN_NAME);
         System.out.println('\t' + Bytes.toString(valueBytes));
       }
