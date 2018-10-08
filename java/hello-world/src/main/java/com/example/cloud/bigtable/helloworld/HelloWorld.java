@@ -43,7 +43,7 @@ import java.io.IOException;
 public class HelloWorld {
 
   // Refer to table metadata names by byte array in the HBase API
-  private static final byte[] TABLE_NAME = Bytes.toBytes("Hello-Bigtable");
+  private static final byte[] TABLE_NAME = Bytes.toBytes("perf_by_domain");
   private static final byte[] COLUMN_FAMILY_NAME = Bytes.toBytes("cf1");
   private static final byte[] COLUMN_NAME = Bytes.toBytes("greeting");
 
@@ -66,11 +66,11 @@ public class HelloWorld {
 
       // [START creating_a_table]
       // Create a table with a single column family
-      HTableDescriptor descriptor = new HTableDescriptor(TableName.valueOf(TABLE_NAME));
-      descriptor.addFamily(new HColumnDescriptor(COLUMN_FAMILY_NAME));
+      //HTableDescriptor descriptor = new HTableDescriptor(TableName.valueOf(TABLE_NAME));
+      //descriptor.addFamily(new HColumnDescriptor(COLUMN_FAMILY_NAME));
 
-      print("Create table " + descriptor.getNameAsString());
-      admin.createTable(descriptor);
+      //print("Create table " + descriptor.getNameAsString());
+      //admin.createTable(descriptor);
       // [END creating_a_table]
 
       // [START writing_rows]
@@ -78,8 +78,8 @@ public class HelloWorld {
       Table table = connection.getTable(TableName.valueOf(TABLE_NAME));
 
       // Write some rows to the table
-      print("Write some greetings to the table");
-      for (int i = 0; i < GREETINGS.length; i++) {
+      //print("Write some greetings to the table");
+      //for (int i = 0; i < GREETINGS.length; i++) {
         // Each row has a unique row key.
         //
         // Note: This example uses sequential numeric IDs for simplicity, but
@@ -91,22 +91,22 @@ public class HelloWorld {
         // best performance, see the documentation:
         //
         //     https://cloud.google.com/bigtable/docs/schema-design
-        String rowKey = "greeting" + i;
+        //String rowKey = "greeting" + i;
 
         // Put a single row into the table. We could also pass a list of Puts to write a batch.
-        Put put = new Put(Bytes.toBytes(rowKey));
-        put.addColumn(COLUMN_FAMILY_NAME, COLUMN_NAME, Bytes.toBytes(GREETINGS[i]));
-        table.put(put);
-      }
+        //Put put = new Put(Bytes.toBytes(rowKey));
+        //put.addColumn(COLUMN_FAMILY_NAME, COLUMN_NAME, Bytes.toBytes(GREETINGS[i]));
+        //table.put(put);
+      //}
       // [END writing_rows]
 
       // [START getting_a_row]
       // Get the first greeting by row key
-      String rowKey = "greeting0";
-      Result getResult = table.get(new Get(Bytes.toBytes(rowKey)));
-      String greeting = Bytes.toString(getResult.getValue(COLUMN_FAMILY_NAME, COLUMN_NAME));
-      System.out.println("Get a single greeting by row key");
-      System.out.printf("\t%s = %s\n", rowKey, greeting);
+      //String rowKey = "greeting0";
+      //Result getResult = table.get(new Get(Bytes.toBytes(rowKey)));
+      //String greeting = Bytes.toString(getResult.getValue(COLUMN_FAMILY_NAME, COLUMN_NAME));
+      //System.out.println("Get a single greeting by row key");
+      //System.out.printf("\t%s = %s\n", rowKey, greeting);
       // [END getting_a_row]
 
       // [START scanning_all_rows]
@@ -123,9 +123,9 @@ public class HelloWorld {
 
       // [START deleting_a_table]
       // Clean up by disabling and then deleting the table
-      print("Delete the table");
-      admin.disableTable(table.getName());
-      admin.deleteTable(table.getName());
+      //print("Delete the table");
+      //admin.disableTable(table.getName());
+      //admin.deleteTable(table.getName());
       // [END deleting_a_table]
 
     } catch (IOException e) {
