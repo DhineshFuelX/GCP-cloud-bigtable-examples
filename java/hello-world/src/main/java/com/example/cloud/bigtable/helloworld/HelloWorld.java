@@ -46,9 +46,9 @@ public class HelloWorld {
   private static final byte[] TABLE_NAME = Bytes.toBytes("perf_by_domain");
   private static final byte[] COLUMN_FAMILY_NAME = Bytes.toBytes("info");
   private static final byte[] COLUMN_NAME = Bytes.toBytes("domainname");
-  private static final String BID = "974";
-  private static final String START = "1414713600000";
-  private static final String END = "1414713700000";
+  private static final String BID = new String("974");
+  private static final String START = new String("1414713600000");
+  private static final String END = new String("1414713700000");
 
   // Write some friendly greetings to Cloud Bigtable
   private static final String[] GREETINGS =
@@ -114,12 +114,15 @@ public class HelloWorld {
 
       // [START scanning_all_rows]
       // Now scan across all rows.
-      byte[] startScan = Bytes.add(Bytes.toBytes(START), Bytes.toBytes("#"), Bytes.toBytes(BID));
+      //byte[] startScan = Bytes.add(Bytes.toBytes(START), Bytes.toBytes("#"), Bytes.toBytes(BID));
 
-      byte[] endScan = Bytes.add(Bytes.toBytes(END), Bytes.toBytes("#"), Bytes.toBytes(BID));
-      Scan scan = new Scan();
-      scan.setStartRow(startScan);
-      scan.setStopRow(endScan);
+      //byte[] endScan = Bytes.add(Bytes.toBytes(END), Bytes.toBytes("#"), Bytes.toBytes(BID));
+      byte startScan = Bytes.toBytes(START+"#"+BID);
+
+      byte endScan = Bytes.toBytes(END+"#"+BID);
+      Scan scan = new Scan(startScan, endScan);
+      //scan.setStartRow(startScan);
+      //scan.setStopRow(endScan);
 
       System.out.println("getStartRow::"+scan.getStartRow()+"-  getStopRow::"+scan.getStopRow());
       print("Scan for all greetings:");
